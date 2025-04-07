@@ -110,13 +110,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ],
               ),
             ),
-            36.sbH,
+           context.isMobile ?  16.sbH : 33.sbH,
             Wrap(
               direction: Axis.horizontal,
               children: List.generate(
                 ref.watch(homeNotifier).merchantList.length,
                 (index) => Padding(
-                  padding: EdgeInsets.fromLTRB(15.aw, 25.ah, 15.aw, 25.ah),
+                  padding: EdgeInsets.fromLTRB(15.aw, 20.ah, 15.aw, 20.ah),
                   child: MerchantInfoTile(
                     merchantName: ref
                         .watch(homeNotifier)

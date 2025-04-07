@@ -1,3 +1,4 @@
+import 'package:credpal_assessment/domain/constants/app_colors.dart';
 import 'package:credpal_assessment/domain/constants/app_constants.dart';
 import 'package:credpal_assessment/domain/constants/app_textstyles.dart';
 import 'package:credpal_assessment/domain/extensions/widget_extensions.dart';
@@ -33,8 +34,23 @@ class MerchantInfoTile extends StatelessWidget {
               child: Center(
                 child: Image.asset(
                   merchantImage,
-                  scale: context.isMobile ?  2 : 4.4,
+                  scale: 4.4,
+                  //scale: context.isMobile ?  2 : 4.4,
                 ),
+              ),
+            ),
+            Positioned(
+              right: context.isMobile ? 7.aw : 18.aw,
+              child: Container(
+                height: 15.ah,
+                width: 15.aw,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.onlineGreen,
+                    border: Border.all(
+                      color: AppColors.neutralWhite,
+                      width: context.isMobile ? 2.aw : 0,
+                    )),
               ),
             ),
           ],
