@@ -1,6 +1,7 @@
 import 'package:credpal_assessment/domain/constants/app_constants.dart';
 import 'package:credpal_assessment/domain/constants/app_textstyles.dart';
 import 'package:credpal_assessment/domain/extensions/widget_extensions.dart';
+import 'package:credpal_assessment/widgets/utility_widgets/layout_helper.dart';
 import 'package:flutter/material.dart';
 
 class MerchantInfoTile extends StatelessWidget {
@@ -32,7 +33,7 @@ class MerchantInfoTile extends StatelessWidget {
               child: Center(
                 child: Image.asset(
                   merchantImage,
-                  scale: 2,
+                  scale: context.isMobile ?  2 : 4.4,
                 ),
               ),
             ),
@@ -41,8 +42,9 @@ class MerchantInfoTile extends StatelessWidget {
         8.sbH,
         Text(
           merchantName,
-          style: AppTextStyles.body1Regular.copyWith(
+          style: AppTextStyles.body1Regular(context).copyWith(
             fontWeight: FontWeight.w500,
+            fontSize: !context.isMobile ? 4.asp : null,
           ),
         ),
       ],

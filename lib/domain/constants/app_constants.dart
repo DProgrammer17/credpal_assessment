@@ -21,11 +21,13 @@ class _SizeConstant {
   static const double _toolBarHeight = 45;
   static const double _tileBorderRadius = 12;
   static const double _lowerBoarderRadius = 8;
+  static const double _horizontalPadding = 20;
 
   double get storyBarRadius => _storyBarRadius.ar;
   double get toolBarHeight => _toolBarHeight.ah;
   double get tileBorderRadius => _tileBorderRadius.ar;
   double get lowerBoarderRadius => _lowerBoarderRadius.ar;
+  double get horizontalPadding => _horizontalPadding.ar;
 }
 
 extension SizeExtension on num {

@@ -92,9 +92,11 @@ class AppScaffold extends StatelessWidget {
                   centerTitle: centerTile,
                   title: appBarContent,
                 ),
-                body: Padding(
-                  padding: padding ?? EdgeInsets.symmetric(horizontal: 20.aw),
-                  child: body,
+                body: SafeArea(
+                  child: Padding(
+                    padding: padding ?? EdgeInsets.symmetric(horizontal: 20.aw),
+                    child: body,
+                  ),
                 ),
                 bottomSheet: Padding(
                   padding: padding ?? EdgeInsets.symmetric(horizontal: 20.aw),

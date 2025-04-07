@@ -1,7 +1,7 @@
 abstract class AppStrings {
   static const appName = 'CredPal App';
   static const fontFamily = 'Avenir';
-  static const payLaterEveryWhere = 'Pay later everywhere';
+  static const payLaterEveryWhere = 'Pay later\neverywhere';
   static const shoppingLimitColon = 'Shopping limit:';
   static const mockNairaHint = '₦0';
   static const nairaSymbol = '₦';

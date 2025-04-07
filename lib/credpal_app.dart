@@ -14,7 +14,8 @@ class CredPalApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(AppConstants.designWidth, AppConstants.designHeight),
-      splitScreenMode: false,
+      splitScreenMode: true,
+      minTextAdapt: false,
       builder: (_, child){
         return AnnotatedRegion<SystemUiOverlayStyle>(
           value: const SystemUiOverlayStyle(

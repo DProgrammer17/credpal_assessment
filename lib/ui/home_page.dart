@@ -10,6 +10,7 @@ import 'package:credpal_assessment/ui/widgets/merchant_info_tile.dart';
 import 'package:credpal_assessment/ui/widgets/product_slide_view.dart';
 import 'package:credpal_assessment/widgets/page_widgets/app_scaffold.dart';
 import 'package:credpal_assessment/widgets/utility_widgets/app_text_field.dart';
+import 'package:credpal_assessment/widgets/utility_widgets/layout_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -48,7 +49,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   SizedBox(
                     width: AppConstants.deviceWidth * 0.75,
                     child: AppTextfield(
-                      height: 50.ah,
+                      height: context.isMobile ? 50.ah : 60.ah,
                       horizontalPadding: 0,
                       prefixIcon: SizedBox(
                         height: 10.ah,
@@ -59,10 +60,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                         ),
                       ),
                       hintText: AppStrings.searchProductHint,
-                      hintStyle: AppTextStyles.body1Regular.copyWith(
+                      hintStyle: AppTextStyles.body1Regular(context).copyWith(
+                        fontSize: !context.isMobile ? 5.asp : null,
                         color: AppColors.subtextGrey,
                       ),
-                      style: AppTextStyles.body1Regular.copyWith(
+                      style: AppTextStyles.body1Regular(context).copyWith(
                         height: 1.4,
                       ),
                       contentPadding: EdgeInsets.symmetric(vertical: 8.ah),
@@ -92,13 +94,15 @@ class _HomePageState extends ConsumerState<HomePage> {
                 children: [
                   Text(
                     AppStrings.featuredMerchants,
-                    style: AppTextStyles.h3.copyWith(
+                    style: AppTextStyles.h3(context).copyWith(
+                      fontSize: !context.isMobile ? 10.asp : null,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                   Text(
                     AppStrings.viewAll,
-                    style: AppTextStyles.body1Regular.copyWith(
+                    style: AppTextStyles.body1Regular(context).copyWith(
+                      fontSize: !context.isMobile ? 6.asp : null,
                       fontWeight: FontWeight.w400,
                       color: AppColors.primaryBlue,
                     ),

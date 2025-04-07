@@ -6,6 +6,7 @@ import 'package:credpal_assessment/domain/constants/app_textstyles.dart';
 import 'package:credpal_assessment/domain/extensions/widget_extensions.dart';
 import 'package:credpal_assessment/ui/model/home_notifier.dart';
 import 'package:credpal_assessment/ui/widgets/product_detail_tile.dart';
+import 'package:credpal_assessment/widgets/utility_widgets/layout_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,7 +20,7 @@ class ProductSlideView extends ConsumerWidget {
       padding: EdgeInsets.symmetric(vertical: 15.ah, horizontal: 21.aw),
       child: GridView.count(
         scrollDirection: Axis.horizontal,
-        crossAxisCount: 2,
+        crossAxisCount:context.isMobile ? 2 : 1,
         crossAxisSpacing: 26.ah,
         mainAxisSpacing: 20.aw,
         children: List.generate(
@@ -51,15 +52,17 @@ class ProductSlideView extends ConsumerWidget {
               children: [
                 Text(
                   AppStrings.pay,
-                  style: AppTextStyles.body1Regular.copyWith(
+                  style: AppTextStyles.body1Regular(context).copyWith(
                     fontWeight: FontWeight.w500,
                     color: AppColors.subtextGrey,
+                    fontSize: !context.isMobile ? 4.asp : null,
                   ),
                 ),
                 2.sbH,
                 Text(
                   '40${AppStrings.percentSymbol}',
-                  style: AppTextStyles.body1Regular.copyWith(
+                  style: AppTextStyles.body1Regular(context).copyWith(
+                    fontSize: !context.isMobile ? 4.asp : null,
                     fontWeight: FontWeight.w500,
                     color: AppColors.primaryBlue,
                   ),
@@ -72,7 +75,7 @@ class ProductSlideView extends ConsumerWidget {
                         .productList
                         .elementAt(index)
                         .logoImage!,
-                    scale: 4,
+                    scale: context.isMobile ? 4 : 3,
                   ),
           ),
         ),

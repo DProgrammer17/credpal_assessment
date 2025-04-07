@@ -1,6 +1,7 @@
 import 'package:credpal_assessment/domain/constants/app_colors.dart';
 import 'package:credpal_assessment/domain/constants/app_constants.dart';
 import 'package:credpal_assessment/domain/constants/app_textstyles.dart';
+import 'package:credpal_assessment/widgets/utility_widgets/layout_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -92,10 +93,10 @@ class AppButton extends StatelessWidget {
                                   Text(
                                     title,
                                     textAlign: TextAlign.center,
-                                    style: AppTextStyles.h3.copyWith(
+                                    style: AppTextStyles.h3(context).copyWith(
                                       color: textColor ??
                                           AppColors.neutralWhite,
-                                      fontSize: 13.asp,
+                                      fontSize: context.isMobile ? 13.asp : 8.asp,
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),

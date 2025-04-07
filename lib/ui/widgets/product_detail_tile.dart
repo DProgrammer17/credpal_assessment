@@ -4,6 +4,7 @@ import 'package:credpal_assessment/domain/constants/app_strings.dart';
 import 'package:credpal_assessment/domain/constants/app_textstyles.dart';
 import 'package:credpal_assessment/domain/extensions/widget_extensions.dart';
 import 'package:credpal_assessment/ui/model/home_notifier.dart';
+import 'package:credpal_assessment/widgets/utility_widgets/layout_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,7 +26,7 @@ class ProductDetailTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      padding: EdgeInsets.fromLTRB(7.aw, 6.ah, 10.aw, 15.ah),
+      padding: EdgeInsets.fromLTRB(7.aw, context.isMobile ? 6.ah : 12.ah, 10.aw, 15.ah),
       decoration: BoxDecoration(
           color: AppColors.neutralWhite,
           borderRadius: BorderRadius.circular(10.ar),
@@ -47,15 +48,16 @@ class ProductDetailTile extends ConsumerWidget {
                 padding: EdgeInsets.only(left: 18.aw),
                 child: Image.asset(
                   image,
-                  height: 100.ah,
+                  height: context.isMobile ? 100.ah : 190.ah,
                   width: 112.aw,
                   fit: BoxFit.cover,
                 ),
               ),
-              13.sbH,
+              context.isMobile ? 13.sbH : 53.sbH,
               Text(
                 productName,
-                style: AppTextStyles.body2Regular.copyWith(
+                style: AppTextStyles.body2Regular(context).copyWith(
+                  fontSize: !context.isMobile ? 6.asp : null,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -70,8 +72,9 @@ class ProductDetailTile extends ConsumerWidget {
                     children: [
                       Text(
                         AppStrings.nairaSymbol,
-                        style: AppTextStyles.body2Regular.copyWith(
+                        style: AppTextStyles.body2Regular(context).copyWith(
                           fontWeight: FontWeight.w700,
+                          fontSize: !context.isMobile ? 6.asp : null,
                           color: AppColors.primaryBlue,
                           fontFamily: '',
                           height: 1,
@@ -83,8 +86,9 @@ class ProductDetailTile extends ConsumerWidget {
                             .watch(homeNotifier.notifier)
                             .formatter
                             .format(productPrice),
-                        style: AppTextStyles.body2Regular.copyWith(
+                        style: AppTextStyles.body2Regular(context).copyWith(
                           fontWeight: FontWeight.w700,
+                          fontSize: !context.isMobile ? 6.asp : null,
                           color: AppColors.primaryBlue,
                         ),
                       ),
@@ -97,9 +101,10 @@ class ProductDetailTile extends ConsumerWidget {
                     children: [
                       Text(
                         AppStrings.nairaSymbol,
-                        style: AppTextStyles.body1Regular.copyWith(
+                        style: AppTextStyles.body1Regular(context).copyWith(
                           fontFamily: '',
                           fontWeight: FontWeight.w500,
+                          fontSize: !context.isMobile ? 6.asp : null,
                           color: AppColors.subtextGrey,
                           height: 1,
                         ),
@@ -110,9 +115,10 @@ class ProductDetailTile extends ConsumerWidget {
                             .watch(homeNotifier.notifier)
                             .formatter
                             .format(discountPrice),
-                        style: AppTextStyles.body1Regular.copyWith(
+                        style: AppTextStyles.body1Regular(context).copyWith(
                           fontWeight: FontWeight.w500,
                           color: AppColors.subtextGrey,
+                          fontSize: !context.isMobile ? 6.asp : null,
                           decoration: TextDecoration.lineThrough,
                         ),
                       ),
@@ -122,23 +128,26 @@ class ProductDetailTile extends ConsumerWidget {
               ),
             ],
           ),
-          Container(
-            height: 50.ah,
-            width: 50.aw,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.neutralWhite,
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.textBlack.withOpacity(0.05),
-                  offset: const Offset(0, 4),
-                  blurRadius: 10,
-                  spreadRadius: 0,
-                ),
-              ],
-            ),
-            child: Center(
-              child: hoverWidget,
+          Positioned(
+            right: !context.isMobile ? 140 : null,
+            child: Container(
+              height: context.isMobile ? 50.ah : 80.ah,
+              width: 50.aw,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.neutralWhite,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.textBlack.withOpacity(0.05),
+                    offset: const Offset(0, 4),
+                    blurRadius: 10,
+                    spreadRadius: 0,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: hoverWidget,
+              ),
             ),
           ),
         ],

@@ -5,6 +5,7 @@ import 'package:credpal_assessment/domain/constants/app_strings.dart';
 import 'package:credpal_assessment/domain/constants/app_textstyles.dart';
 import 'package:credpal_assessment/domain/extensions/widget_extensions.dart';
 import 'package:credpal_assessment/widgets/utility_widgets/app_button.dart';
+import 'package:credpal_assessment/widgets/utility_widgets/layout_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,7 +19,7 @@ class HomePageAppBarWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(20.aw, 92.ah, 20.aw, 42.ah),
+      padding: EdgeInsets.fromLTRB(20.aw, context.isMobile ? 92.ah : 30.ah, 20.aw, 42.ah),
       color: AppColors.primaryIndigo,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,20 +28,17 @@ class HomePageAppBarWidget extends StatelessWidget
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              SizedBox(
-                width: 158.aw,
-                child: Text(
-                  AppStrings.payLaterEveryWhere,
-                  style: AppTextStyles.h1,
-                ),
+              Text(
+                AppStrings.payLaterEveryWhere,
+                style: AppTextStyles.h1(context),
               ),
               7.sbW,
               Padding(
-                padding: EdgeInsets.only(bottom: 13.ah),
+                padding: EdgeInsets.only(bottom: context.isMobile ?  13.ah : 23.ah),
                 child: SvgPicture.asset(
                   AppSvgs.infoIcon,
-                  height: 20.ah,
-                  width: 20.aw,
+                  height: context.isMobile ?  20.ah :40.ah,
+                  width: context.isMobile ? 20.aw :40.aw,
                 ),
               ),
             ],
@@ -54,14 +52,14 @@ class HomePageAppBarWidget extends StatelessWidget
                 children: [
                   Text(
                     AppStrings.shoppingLimitColon,
-                    style: AppTextStyles.body1Regular.copyWith(
+                    style: AppTextStyles.body1Regular(context).copyWith(
                       color: AppColors.subtextBlack,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
                     ' ${AppStrings.mockNairaHint}',
-                    style: AppTextStyles.body1Regular.copyWith(
+                    style: AppTextStyles.body1Regular(context).copyWith(
                       fontFamily: '',
                       color: AppColors.subtextBlack,
                       fontWeight: FontWeight.w300,
